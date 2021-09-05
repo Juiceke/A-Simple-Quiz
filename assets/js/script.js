@@ -3,7 +3,7 @@ var startQuiz = document.getElementById('start-quiz');
 var question = document.getElementById('question');
 var paragraph = document.getElementById('paragraph');
 var timeLeft = 120;
-var score = timeLeft;
+var score = 0;
 var timeLoss = 10;
 
 
@@ -91,6 +91,9 @@ column.appendChild(questionBtnElC);
 var wrong = document.getElementById('wrong');
 var wrong2 = document.getElementById('wrong2');
 var QuestionOneWrong = function() {
+questionBtnElA.remove();
+    questionBtnElB.remove();
+    questionBtnElC.remove();
 
 timeLeft = timeLeft - 10;
 timerEl.textContent = timeLeft;
@@ -101,11 +104,17 @@ questionTwo();
 
 var right = document.getElementById('right')
 var QuestionOneRight = function() {
-questionTwo();
+    questionBtnElA.remove(questionBtnElA);
+    questionBtnElB.remove(questionBtnElB);
+    questionBtnElC.remove(questionBtnElC);
+    score++;
+    questionTwo();
 }
 
 // Question two
 var questionTwo = function() {
+    
+
 question.textContent = questionArr[1].question;
 
 
@@ -114,26 +123,26 @@ column.className = 'btn-column';
 
 var questionBtnElA = document.createElement('button');
 questionBtnElA.className = 'btn';
-questionBtnElA.setAttribute('id', 'questionTwoWrong');
+questionBtnElA.setAttribute('id', 'twoWrong');
 questionBtnElA.textContent = questionArr[1].answers.a;
 document.body.appendChild(column);
 column.appendChild(questionBtnElA)
 
 var questionBtnElB = document.createElement('button');
 questionBtnElB.className = 'btn';
-questionBtnElB.setAttribute('id', 'questionTwoWrong2');
+questionBtnElB.setAttribute('id', 'twoWrong2');
 questionBtnElB.textContent = questionArr[1].answers.b;
 column.appendChild(questionBtnElB);
 
 var questionBtnElC = document.createElement('button');
 questionBtnElC.className = 'btn';
-questionBtnElC.setAttribute('id', 'questionTwoRight');
+questionBtnElC.setAttribute('id', 'twoRight');
 questionBtnElC.textContent = questionArr[1].answers.c;
 column.appendChild(questionBtnElC);
 
-var twoWrong = document.getElementById('questionTwoWrong');
-var twoWrong2 = document.getElementById('questionTwoWrong2');
-var twoRight = document.getElementById('questionTwoRight');
+var twoWrong = document.getElementById('twoWrong');
+var twoWrong2 = document.getElementById('twoWrong2');
+var twoRight = document.getElementById('twoRight');
 
 twoWrong.onclick = questionTwoWrong;
 twoWrong2.onclick = questionTwoWrong;
@@ -141,17 +150,29 @@ twoRight.onclick = questionTwoRight;
 }
 
 var questionTwoWrong = function() {
-timeLeft = timeLeft - 10;
-timerEl.textContent = timeLeft;
-questionThree();
-}
-
-var questionTwoRight = function() {
+    twoWrong.remove(twoWrong);
+    twoWrong2.remove(twoWrong2);
+    twoRight.remove(twoRight);
+    timeLeft = timeLeft - 10;
+    timerEl.textContent = timeLeft;
     questionThree();
 }
 
+var questionTwoRight = function() {
+    twoWrong.remove(twoWrong);
+    twoWrong2.remove(twoWrong2);
+    twoRight.remove(twoRight);
+    score++;
+    questionThree();
+    
+    
+}
+
+
 // Question three --------------------------------------------
 var questionThree = function() {
+    
+
     question.textContent = questionArr[2].question;
     
     var column = document.createElement('div');
@@ -197,18 +218,29 @@ var questionThree = function() {
 // Question three wrong ----------------------------------------
 
 questionThreeWrong = function() {
-timeLeft = timeLeft - 10;
-timerEl.textContent = timeLeft;
-questionFour();
+    threeWrong.remove(threeWrong);
+    threeWrong2.remove(threeWrong2);
+    threeWrong3.remove(threeWrong3);
+    threeRight.remove(threeRight);
+    timeLeft = timeLeft - 10;
+    timerEl.textContent = timeLeft;
+    questionFour();
 }
 
 // Question three right
 
 questionThreeRight = function() {
+    threeWrong.remove(threeWrong);
+    threeWrong2.remove(threeWrong2);
+    threeWrong3.remove(threeWrong3);
+    threeRight.remove(threeRight);
+    score++;
     questionFour();
 }
 // Question Four -----------------------------------------------
 var questionFour = function() {
+    
+
         question.textContent = questionArr[3].question;
         
         var column = document.createElement('div');
@@ -254,6 +286,13 @@ var questionFour = function() {
     // Question four wrong ----------------------------------------
     
     questionFourWrong = function() {
+    fourWrong.remove(fourWrong);
+    fourWrong2.remove(fourWrong2);
+    fourWrong3.remove(fourWrong3);
+    fourRight.remove(fourRight);
+    
+
+    column.remove()
     timeLeft = timeLeft - 10;
     timerEl.textContent = timeLeft;
     questionFive()
@@ -261,16 +300,22 @@ var questionFour = function() {
     // Question four right
     
     questionFourRight = function() {
+        fourWrong.remove(fourWrong);
+    fourWrong2.remove(fourWrong2);
+    fourWrong3.remove(fourWrong3);
+    fourRight.remove(fourRight);
+    score++
         questionFive();
     }
 
 // Question Five
 var questionFive = function() {
+    
+
         question.textContent = questionArr[4].question;
-        
         var column = document.createElement('div');
         column.className = 'btn-column';
-        
+
         var questionBtnElA = document.createElement('button');
         questionBtnElA.className = 'btn';
         questionBtnElA.setAttribute('id', 'fiveWrong');
@@ -311,6 +356,10 @@ var questionFive = function() {
     // Question five wrong ----------------------------------------
     
     questionFiveWrong = function() {
+        fiveWrong.remove(fiveWrong);
+        fiveWrong2.remove(fiveWrong2);
+        fiveWrong3.remove(fiveWrong3);
+        fiveRight.remove(fiveRight);
     timeLeft = timeLeft - 10;
     timerEl.textContent = timeLeft;
     clearInterval(time);
@@ -319,9 +368,30 @@ var questionFive = function() {
     // Question five right
     
     questionFiveRight = function() {
+        fiveWrong.remove(fiveWrong);
+        fiveWrong2.remove(fiveWrong2);
+        fiveWrong3.remove(fiveWrong3);
+        fiveRight.remove(fiveRight);
+        score++
         clearInterval(time);
         gameOver();
     
+}
+
+var gameOver = function() {
+  question.textContent = 'All done!';
+  var Inititals = '';
+  var yourScore = document.createElement('p');
+        yourScore.className = 'your-score'
+        document.body.appendChild(yourScore);
+        yourScore.innerHTML = 'your score is ' + score;
+  var bruh = document.createElement('div');
+    document.body.appendChild(yourScore)
+    debugger;
+    bruh.innerhtml = "Enter Intitials:" + "<input type='text'/>" + "<button type='submit'/>"
+
+
+
 }
 
 
