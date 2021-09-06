@@ -68,3 +68,25 @@ main p {
 .btn:active {
     background-color: purple;
 }
+
+/* styling for gameover page */
+
+.initials {
+    height: 20px;
+    width: 300px;
+}
+
+.submit-btn {
+    height: 20px;
+    width: 85px;
+
+}
+
+.your-score {
+    width: 55%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: larger;
+    
+}

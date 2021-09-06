@@ -217,7 +217,7 @@ var questionThree = function() {
 
 // Question three wrong ----------------------------------------
 
-questionThreeWrong = function() {
+var questionThreeWrong = function() {
     threeWrong.remove(threeWrong);
     threeWrong2.remove(threeWrong2);
     threeWrong3.remove(threeWrong3);
@@ -229,7 +229,7 @@ questionThreeWrong = function() {
 
 // Question three right
 
-questionThreeRight = function() {
+var questionThreeRight = function() {
     threeWrong.remove(threeWrong);
     threeWrong2.remove(threeWrong2);
     threeWrong3.remove(threeWrong3);
@@ -285,7 +285,7 @@ var questionFour = function() {
 }
     // Question four wrong ----------------------------------------
     
-    questionFourWrong = function() {
+    var questionFourWrong = function() {
     fourWrong.remove(fourWrong);
     fourWrong2.remove(fourWrong2);
     fourWrong3.remove(fourWrong3);
@@ -299,7 +299,7 @@ var questionFour = function() {
     }
     // Question four right
     
-    questionFourRight = function() {
+    var questionFourRight = function() {
         fourWrong.remove(fourWrong);
     fourWrong2.remove(fourWrong2);
     fourWrong3.remove(fourWrong3);
@@ -355,7 +355,7 @@ var questionFive = function() {
 }
     // Question five wrong ----------------------------------------
     
-    questionFiveWrong = function() {
+    var questionFiveWrong = function() {
         fiveWrong.remove(fiveWrong);
         fiveWrong2.remove(fiveWrong2);
         fiveWrong3.remove(fiveWrong3);
@@ -367,7 +367,7 @@ var questionFive = function() {
     }
     // Question five right
     
-    questionFiveRight = function() {
+    var questionFiveRight = function() {
         fiveWrong.remove(fiveWrong);
         fiveWrong2.remove(fiveWrong2);
         fiveWrong3.remove(fiveWrong3);
@@ -380,18 +380,35 @@ var questionFive = function() {
 
 var gameOver = function() {
   question.textContent = 'All done!';
-  var Inititals = '';
   var yourScore = document.createElement('p');
         yourScore.className = 'your-score'
         document.body.appendChild(yourScore);
-        yourScore.innerHTML = 'your score is ' + score;
-  var bruh = document.createElement('div');
-    document.body.appendChild(yourScore)
-    debugger;
-    bruh.innerhtml = "Enter Intitials:" + "<input type='text'/>" + "<button type='submit'/>"
+        yourScore.innerHTML = 'Your final score is ' + score + '<br>' + 'Your initials:';
 
+        var inputText = document.createElement('input');
+        inputText.setAttribute('type', 'text');
+        inputText.setAttribute('id', 'initials')
+        inputText.className = 'initials';
+        yourScore.appendChild(inputText);
 
+        var inputValue = document.createElement('input');
+        inputValue.setAttribute('type', 'submit');
+        inputValue.setAttribute('id', 'submit-btn')
+        inputValue.className = 'btn submit-btn';
+        yourScore.appendChild(inputValue);
 
+        var input = document.getElementById('submit-btn');
+        
+        
+        var highscores = function() {
+        var log = document.getElementById('initials').value;
+        console.log(log);
+        localStorage.setItem.log;
+        
+      }
+
+      input.addEventListener('click', highscores , false);
+      console.log(localStorage.getItem.log)
 }
 
 
